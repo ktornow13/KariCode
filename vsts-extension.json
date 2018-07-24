@@ -1,0 +1,69 @@
+{
+    "manifestVersion": 1,
+    "id": "Kari first samples-build-inspector",
+    "version": "1",
+    "name": "Kari Build Inspector",
+    "description": "A simple extension that demonstrates how to show details for a Visual Studio Team Services resource. Created from https://github.com/Microsoft/vsts-extension-samples/blob/master/build-inspector/vss-extension.json" witha publisher fabrikam,
+    "publisher": "i will need one",
+    "public": false,
+    "icons": {
+        "default": "new to make a picture  static/images/fabrikam-logo.png"
+    },
+    "scopes": ["vso.build", "vso.work", "vso.code"],
+    "tags": [
+        "Sample"
+    ],
+    "categories": [
+        "NOTES HERE FROM KARI  -     Developer samples"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true,
+            "packagePath": "inspector"
+        },
+        {
+            "path": "static",
+            "addressable": true,
+            "packagePath": "/"
+        },
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "showCommits",
+            "type": "ms.vss-web.action",
+            "description": "Menu action on builds grid to show associated items",
+            "targets": [
+                "ms.vss-build-web.completed-build-menu"
+            ],
+            "properties": {
+                "title": "View associated items",
+                "uri": "launch.html"
+            }
+        },
+        {
+            "id": "build.items",
+            "type": "ms.vss-web.hub",
+            "description": "Inspector hub to the Build hub group that shows items associated with a build",
+            "targets": [
+                "ms.vss-build-web.build-release-hub-group",
+                "ms.vss-build-web.build-hub-group"
+            ],
+            "properties": {
+                "name": "Inspector",
+                "order": 22,
+                "uri": "items.html"
+            }
+        }
+    ]
+}
